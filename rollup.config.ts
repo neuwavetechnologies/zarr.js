@@ -3,8 +3,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
 import visualizer from 'rollup-plugin-visualizer';
+import json from '@rollup/plugin-json';
 
-const commonPlugins = () => [typescript({ useTsconfigDeclarationDir: true }), commonjs(), resolve()];
+const commonPlugins = () => [typescript({ useTsconfigDeclarationDir: true }), commonjs(), resolve(), json()];
 
 export default [
   {
@@ -41,15 +42,16 @@ export default [
   {
     input: 'src/zarr.ts',
     output: [
-      { file: 'dist/zarr.cjs', format: 'cjs', sourcemap: true },
-      {
-        file: 'dist/zarr.umd.js',
-        name: 'zarr',
-        format: 'umd',
-        sourcemap: true,
-        esModule: false,
-        plugins: [terser()],
-      },
+      { dir: 'dist/', format: 'cjs', entryFileNames: 'zarr.cjs', sourcemap: true },
+      // {
+      //   dir: 'dist/',
+      //   entryFileNames: 'zarr.umd.js',
+      //   name: 'zarr',
+      //   format: 'umd',
+      //   sourcemap: true,
+      //   esModule: false,
+      //   plugins: [terser()],
+      // },
     ],
     plugins: [
       ...commonPlugins()

@@ -22,20 +22,20 @@
     "zarr.umd.js.map"
   ],
   "sideEffects": [
-    "./zarr.mjs"
+    "./dist/zarr.mjs"
   ],
-  "main": "zarr.cjs",
-  "module": "zarr.mjs",
-  "umd:main": "zarr.umd.js",
-  "typings": "types/zarr.d.ts",
+  "main": "dist/zarr.cjs",
+  "module": "dist/zarr.mjs",
+  "umd:main": "dist/zarr.umd.js",
+  "types": "dist/types/zarr.d.ts",
   "exports": {
     ".": {
-      "umd": "./zarr.umd.js",
-      "import": "./zarr.mjs",
-      "require": "./zarr.cjs"
+      "umd": "./dist/zarr.umd.js",
+      "import": "./dist/zarr.mjs",
+      "require": "./dist/zarr.cjs"
     },
     "./core": {
-      "import": "./core.mjs"
+      "import": "./dist/core.mjs"
     }
   },
   "author": "Guido Zuidhof <me@guido.io>",
@@ -69,6 +69,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@petamoriken/float16": "^3.6.6",
     "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.1",
@@ -91,6 +92,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.664.0",
     "numcodecs": "^0.2.2",
     "p-queue": "^7.1.0"
   }

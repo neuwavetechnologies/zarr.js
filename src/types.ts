@@ -31,6 +31,7 @@ export type DtypeString =
   | '<i4'
   | '<f2'
   | '<f4'
+  | '<i8'
   | '<f8'
   | '>u1'
   | '>i1'
@@ -109,6 +110,11 @@ export interface ZarrArrayMetadata {
    * Separator placed between the dimensions of a chunk.
    */
   dimension_separator?: '.' | '/';
+
+  /**
+   * Units (for Time)
+   */
+  units?: string;
 }
 
 export interface ZarrGroupMetadata {

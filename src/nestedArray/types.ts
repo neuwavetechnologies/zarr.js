@@ -25,6 +25,7 @@ export type TypedArray =
   | Int32Array
   | Float32Array
   | Float64Array
+  // | BigInt64Array
   | InstanceType<Float16ArrayConstructor>;
 
 export type TypedArrayConstructor<T extends TypedArray> = {
@@ -50,8 +51,9 @@ const DTYPE_TYPEDARRAY_MAPPING: { [A in DtypeString]: TypedArrayConstructor<Type
   '<i2': Int16Array,
   '<u4': Uint32Array,
   '<i4': Int32Array,
-  '<f4': Float32Array,
+  '<i8': Float64Array,
   '<f2': Float16Array,
+  '<f4': Float32Array,
   '<f8': Float64Array,
   '>b': Int8Array,
   '>B': Uint8Array,
@@ -98,6 +100,7 @@ export function getTypedArrayDtypeString(t: TypedArray): DtypeString {
   if (t instanceof Int16Array) return '<i2';
   if (t instanceof Uint32Array) return '<u4';
   if (t instanceof Int32Array) return '<i4';
+  // if (t instanceof Float64Array) return '<i8';
   if (t instanceof Float32Array) return '<f4';
   if (t instanceof Float64Array) return '<f8';
   throw new ValueError('Mapping for TypedArray to Dtypestring not known');
