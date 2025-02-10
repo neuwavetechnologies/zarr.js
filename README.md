@@ -1,5 +1,5 @@
 # Forked Repository
-This is a forked version of [zarr.js](https://github.com/gzuidhof/zarr.js), enabling easy S3 connection to zarr datasets using an S3Store and an in-built cache for fast frequent lookups. This version also enables 'reading' Datetime values from zarr files, brute-forced by casting Int64 to Float64 within zarr. For now, accessing the actual values requires some user code to convert back from Float64, such as:
+This is a forked version of [zarr.js](https://github.com/gzuidhof/zarr.js), with changes which enable easy S3 connection to zarr datasets using an S3Store and an in-built cache for fast frequent lookups. This version also enables 'reading' Datetime values from zarr files, brute-forced by casting Int64 to Float64 within zarr. For now, accessing the actual values requires some user code to convert back from Float64, such as:
 ```
 function float64ToInt64Bits(value: number): number {
   const buffer = new ArrayBuffer(8);
