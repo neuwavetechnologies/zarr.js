@@ -1,3 +1,27 @@
+# Forked Repository
+This is a forked version of [zarr.js]{https://github.com/gzuidhof/zarr.js}, enabling easy S3 connection to zarr datasets using an S3Store and an in-built cache for fast frequent lookups. This version also enables 'reading' Datetime values from zarr files, brute-forced by casting Int64 to Float64 within zarr. For now, accessing the actual values requires some user code to convert back from Float64, such as:
+```
+function float64ToInt64Bits(value: number): number {
+  const buffer = new ArrayBuffer(8);
+  const view = new DataView(buffer);
+  view.setFloat64(0, value, false);  // Alias to same memory
+  return Number(view.getBigInt64(0, false));  // Return as bigint
+}
+
+async function getIndexFromTime(timeArray: ZarrArray, time0: Date, time: Date): Promise<number> {
+  return float64ToInt64Bits((await timeArray.get(getHourDiff(time0, time))) as number);
+}
+```
+
+Changes include:
+* s3store.ts for the S3Store implementation;
+* package.json for the aws-sdk dependency;
+* rollup.config.ts to fix rollup with json dependency (ln6: import json from '@rollup/plugin-json');
+* zarr-core.ts to export S3Store;
+* names.ts/types.ts for Int64 'integration';
+
+--------------------------------------------------------
+
 ![Zarr.js Logo](docs/logo.png)
 
 [![Actions Status](https://github.com/gzuidhof/zarr.js/actions/workflows/test.yml/badge.svg)](https://github.com/gzuidhof/zarr.js/actions)
