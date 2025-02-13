@@ -10,8 +10,8 @@
     "async"
   ],
   "files": [
-    "lib/*",
-    "types/*",
+    "dist/*",
+    "dist/types/*",
     "core.mjs",
     "core.mjs.map",
     "zarr.mjs",
