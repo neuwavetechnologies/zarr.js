@@ -21425,10 +21425,10 @@ const fromEnv = (init) => async () => {
 
 const ENV_IMDS_DISABLED$1 = "AWS_EC2_METADATA_DISABLED";
 const remoteProvider = async (init) => {
-    const { ENV_CMDS_FULL_URI, ENV_CMDS_RELATIVE_URI, fromContainerMetadata, fromInstanceMetadata } = await Promise.resolve().then(function () { return require('./index-6a30f78f.js'); });
+    const { ENV_CMDS_FULL_URI, ENV_CMDS_RELATIVE_URI, fromContainerMetadata, fromInstanceMetadata } = await Promise.resolve().then(function () { return require('./index-931164cc.js'); });
     if (process.env[ENV_CMDS_RELATIVE_URI] || process.env[ENV_CMDS_FULL_URI]) {
         init.logger?.debug("@aws-sdk/credential-provider-node - remoteProvider::fromHttp/fromContainerMetadata");
-        const { fromHttp } = await Promise.resolve().then(function () { return require('./index-e6945436.js'); });
+        const { fromHttp } = await Promise.resolve().then(function () { return require('./index-6eaccd00.js'); });
         return chain(fromHttp(init), fromContainerMetadata(init));
     }
     if (process.env[ENV_IMDS_DISABLED$1] && process.env[ENV_IMDS_DISABLED$1] !== "false") {
@@ -21473,19 +21473,19 @@ const defaultProvider = (init = {}) => memoize(chain(async () => {
     if (!ssoStartUrl && !ssoAccountId && !ssoRegion && !ssoRoleName && !ssoSession) {
         throw new CredentialsProviderError("Skipping SSO provider in default chain (inputs do not include SSO fields).", { logger: init.logger });
     }
-    const { fromSSO } = await Promise.resolve().then(function () { return require('./index-71127057.js'); });
+    const { fromSSO } = await Promise.resolve().then(function () { return require('./index-5593566d.js'); });
     return fromSSO(init)();
 }, async () => {
     init.logger?.debug("@aws-sdk/credential-provider-node - defaultProvider::fromIni");
-    const { fromIni } = await Promise.resolve().then(function () { return require('./index-b25f489e.js'); });
+    const { fromIni } = await Promise.resolve().then(function () { return require('./index-4d8bb9d8.js'); });
     return fromIni(init)();
 }, async () => {
     init.logger?.debug("@aws-sdk/credential-provider-node - defaultProvider::fromProcess");
-    const { fromProcess } = await Promise.resolve().then(function () { return require('./index-575a6176.js'); });
+    const { fromProcess } = await Promise.resolve().then(function () { return require('./index-d34d191a.js'); });
     return fromProcess(init)();
 }, async () => {
     init.logger?.debug("@aws-sdk/credential-provider-node - defaultProvider::fromTokenFile");
-    const { fromTokenFile } = await Promise.resolve().then(function () { return require('./index-a4f2eaf6.js'); });
+    const { fromTokenFile } = await Promise.resolve().then(function () { return require('./index-f5bb6142.js'); });
     return fromTokenFile(init)();
 }, async () => {
     init.logger?.debug("@aws-sdk/credential-provider-node - defaultProvider::remoteProvider");
@@ -22274,7 +22274,7 @@ const inferPhysicalRegion = async () => {
     }
     if (!process.env[ENV_IMDS_DISABLED]) {
         try {
-            const { getInstanceMetadataEndpoint, httpRequest } = await Promise.resolve().then(function () { return require('./index-6a30f78f.js'); });
+            const { getInstanceMetadataEndpoint, httpRequest } = await Promise.resolve().then(function () { return require('./index-931164cc.js'); });
             const endpoint = await getInstanceMetadataEndpoint();
             return (await httpRequest({ ...endpoint, path: IMDS_REGION_PATH })).toString();
         }
@@ -22572,7 +22572,7 @@ class HeadObjectCommand extends Command
     .build() {
 }
 
-// S3Store.ts
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 // A very minimal custom S3 store example. 
 // This store is read-only; 'setItem' or 'deleteItem' either throw 
 // or remain unimplemented.
@@ -22832,4 +22832,4 @@ exports.toBase64 = toBase64;
 exports.toUtf8 = toUtf8;
 exports.withBaseException = withBaseException;
 exports.zeros = zeros;
-//# sourceMappingURL=zarr-5dbd5693.js.map
+//# sourceMappingURL=zarr-ee88442e.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 require('buffer');
 require('zlib');
 require('stream');
@@ -22,4 +22,4 @@ exports.ENV_KEY = zarr.ENV_KEY;
 exports.ENV_SECRET = zarr.ENV_SECRET;
 exports.ENV_SESSION = zarr.ENV_SESSION;
 exports.fromEnv = zarr.fromEnv;
-//# sourceMappingURL=index-324fdbff.js.map
+//# sourceMappingURL=index-2e6a3174.js.map

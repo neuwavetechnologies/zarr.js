@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // S3Store.ts
 import { GetObjectCommand, HeadObjectCommand, NoSuchKey, S3Client } from "@aws-sdk/client-s3";
 // A very minimal custom S3 store example. 

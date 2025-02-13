@@ -1,6 +1,6 @@
 'use strict';
 
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 var url = require('url');
 var buffer = require('buffer');
 var http = require('http');
@@ -376,4 +376,4 @@ exports.fromInstanceMetadata = fromInstanceMetadata;
 exports.getInstanceMetadataEndpoint = getInstanceMetadataEndpoint;
 exports.httpRequest = httpRequest;
 exports.providerConfigFromInit = providerConfigFromInit;
-//# sourceMappingURL=index-6a30f78f.js.map
+//# sourceMappingURL=index-931164cc.js.map

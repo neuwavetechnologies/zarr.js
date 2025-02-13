@@ -1,6 +1,6 @@
 'use strict';
 
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 require('http2');
 require('stream');
 var fs = require('fs/promises');
@@ -176,4 +176,4 @@ Set AWS_CONTAINER_CREDENTIALS_FULL_URI or AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
 };
 
 exports.fromHttp = fromHttp;
-//# sourceMappingURL=index-e6945436.js.map
+//# sourceMappingURL=index-6eaccd00.js.map

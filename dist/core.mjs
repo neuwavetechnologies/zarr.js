@@ -14982,7 +14982,7 @@ class HeadObjectCommand extends Command
     .build() {
 }
 
-// S3Store.ts
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 // A very minimal custom S3 store example. 
 // This store is read-only; 'setItem' or 'deleteItem' either throw 
 // or remain unimplemented.

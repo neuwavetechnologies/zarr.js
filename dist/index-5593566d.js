@@ -1,11 +1,11 @@
 'use strict';
 
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 require('os');
 var path = require('path');
 var crypto = require('crypto');
 var fs = require('fs');
-var parseKnownFiles = require('./parseKnownFiles-b6039e3c.js');
+var parseKnownFiles = require('./parseKnownFiles-25a5fdd4.js');
 require('buffer');
 require('zlib');
 require('stream');
@@ -56,7 +56,7 @@ const EXPIRE_WINDOW_MS = 5 * 60 * 1000;
 const REFRESH_MESSAGE = `To refresh this SSO session run 'aws sso login' with the corresponding profile.`;
 
 const getSsoOidcClient = async (ssoRegion, init = {}) => {
-    const { SSOOIDCClient } = await Promise.resolve().then(function () { return require('./index-aac0015d.js'); });
+    const { SSOOIDCClient } = await Promise.resolve().then(function () { return require('./index-93937cd7.js'); });
     const ssoOidcClient = new SSOOIDCClient(Object.assign({}, init.clientConfig ?? {}, {
         region: ssoRegion ?? init.clientConfig?.region,
         logger: init.clientConfig?.logger ?? init.parentClientConfig?.logger,
@@ -65,7 +65,7 @@ const getSsoOidcClient = async (ssoRegion, init = {}) => {
 };
 
 const getNewSsoOidcToken = async (ssoToken, ssoRegion, init = {}) => {
-    const { CreateTokenCommand } = await Promise.resolve().then(function () { return require('./index-aac0015d.js'); });
+    const { CreateTokenCommand } = await Promise.resolve().then(function () { return require('./index-93937cd7.js'); });
     const ssoOidcClient = await getSsoOidcClient(ssoRegion, init);
     return ssoOidcClient.send(new CreateTokenCommand({
         clientId: ssoToken.clientId,
@@ -213,7 +213,7 @@ const resolveSSOCredentials = async ({ ssoStartUrl, ssoSession, ssoAccountId, ss
         });
     }
     const { accessToken } = token;
-    const { SSOClient, GetRoleCredentialsCommand } = await Promise.resolve().then(function () { return require('./loadSso-03813230.js'); });
+    const { SSOClient, GetRoleCredentialsCommand } = await Promise.resolve().then(function () { return require('./loadSso-d9edde14.js'); });
     const sso = ssoClient ||
         new SSOClient(Object.assign({}, clientConfig ?? {}, {
             logger: clientConfig?.logger ?? parentClientConfig?.logger,
@@ -338,4 +338,4 @@ const fromSSO = (init = {}) => async ({ callerClientConfig } = {}) => {
 exports.fromSSO = fromSSO;
 exports.isSsoProfile = isSsoProfile;
 exports.validateSsoProfile = validateSsoProfile;
-//# sourceMappingURL=index-71127057.js.map
+//# sourceMappingURL=index-5593566d.js.map

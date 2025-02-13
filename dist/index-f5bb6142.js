@@ -1,6 +1,6 @@
 'use strict';
 
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 var fs = require('fs');
 require('buffer');
 require('zlib');
@@ -18,7 +18,7 @@ const fromWebToken = (init) => async (awsIdentityProperties) => {
     const { roleArn, roleSessionName, webIdentityToken, providerId, policyArns, policy, durationSeconds } = init;
     let { roleAssumerWithWebIdentity } = init;
     if (!roleAssumerWithWebIdentity) {
-        const { getDefaultRoleAssumerWithWebIdentity } = await Promise.resolve().then(function () { return require('./index-859bc80c.js'); });
+        const { getDefaultRoleAssumerWithWebIdentity } = await Promise.resolve().then(function () { return require('./index-e3747a50.js'); });
         roleAssumerWithWebIdentity = getDefaultRoleAssumerWithWebIdentity({
             ...init.clientConfig,
             credentialProviderLogger: init.logger,
@@ -66,4 +66,4 @@ const fromTokenFile = (init = {}) => async () => {
 
 exports.fromTokenFile = fromTokenFile;
 exports.fromWebToken = fromWebToken;
-//# sourceMappingURL=index-a4f2eaf6.js.map
+//# sourceMappingURL=index-f5bb6142.js.map

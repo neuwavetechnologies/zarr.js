@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // S3Store.ts
 
 import { AsyncStore } from "./types";
@@ -40,7 +42,7 @@ export class S3Store implements AsyncStore<ArrayBuffer, any> {
       if (!response.Body) 
         throw new Error(`Object body not found at ${this.bucketName}/${objectKey}`);
 
-      return response.Body.transformToString()
+      return response.Body.transformToString();
     }
 
     // Array chunk file

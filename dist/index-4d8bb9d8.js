@@ -2,10 +2,10 @@
 
 require('os');
 require('path');
-var zarr = require('./zarr-5dbd5693.js');
+var zarr = require('./zarr-ee88442e.js');
 require('crypto');
 require('fs');
-var parseKnownFiles = require('./parseKnownFiles-b6039e3c.js');
+var parseKnownFiles = require('./parseKnownFiles-25a5fdd4.js');
 require('buffer');
 require('zlib');
 require('stream');
@@ -17,19 +17,19 @@ require('process');
 const resolveCredentialSource = (credentialSource, profileName, logger) => {
     const sourceProvidersMap = {
         EcsContainer: async (options) => {
-            const { fromHttp } = await Promise.resolve().then(function () { return require('./index-e6945436.js'); });
-            const { fromContainerMetadata } = await Promise.resolve().then(function () { return require('./index-6a30f78f.js'); });
+            const { fromHttp } = await Promise.resolve().then(function () { return require('./index-6eaccd00.js'); });
+            const { fromContainerMetadata } = await Promise.resolve().then(function () { return require('./index-931164cc.js'); });
             logger?.debug("@aws-sdk/credential-provider-ini - credential_source is EcsContainer");
             return async () => zarr.chain(fromHttp(options ?? {}), fromContainerMetadata(options))().then(setNamedProvider);
         },
         Ec2InstanceMetadata: async (options) => {
             logger?.debug("@aws-sdk/credential-provider-ini - credential_source is Ec2InstanceMetadata");
-            const { fromInstanceMetadata } = await Promise.resolve().then(function () { return require('./index-6a30f78f.js'); });
+            const { fromInstanceMetadata } = await Promise.resolve().then(function () { return require('./index-931164cc.js'); });
             return async () => fromInstanceMetadata(options)().then(setNamedProvider);
         },
         Environment: async (options) => {
             logger?.debug("@aws-sdk/credential-provider-ini - credential_source is Environment");
-            const { fromEnv } = await Promise.resolve().then(function () { return require('./index-324fdbff.js'); });
+            const { fromEnv } = await Promise.resolve().then(function () { return require('./index-2e6a3174.js'); });
             return async () => fromEnv(options)().then(setNamedProvider);
         },
     };
@@ -71,7 +71,7 @@ const resolveAssumeRoleCredentials = async (profileName, profiles, options, visi
     const profileData = profiles[profileName];
     const { source_profile, region } = profileData;
     if (!options.roleAssumer) {
-        const { getDefaultRoleAssumer } = await Promise.resolve().then(function () { return require('./index-859bc80c.js'); });
+        const { getDefaultRoleAssumer } = await Promise.resolve().then(function () { return require('./index-e3747a50.js'); });
         options.roleAssumer = getDefaultRoleAssumer({
             ...options.clientConfig,
             credentialProviderLogger: options.logger,
@@ -120,13 +120,13 @@ const isCredentialSourceWithoutRoleArn = (section) => {
 };
 
 const isProcessProfile = (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.credential_process === "string";
-const resolveProcessCredentials = async (options, profile) => Promise.resolve().then(function () { return require('./index-575a6176.js'); }).then(({ fromProcess }) => fromProcess({
+const resolveProcessCredentials = async (options, profile) => Promise.resolve().then(function () { return require('./index-d34d191a.js'); }).then(({ fromProcess }) => fromProcess({
     ...options,
     profile,
 })().then((creds) => zarr.setCredentialFeature(creds, "CREDENTIALS_PROFILE_PROCESS", "v")));
 
 const resolveSsoCredentials = async (profile, profileData, options = {}) => {
-    const { fromSSO } = await Promise.resolve().then(function () { return require('./index-71127057.js'); });
+    const { fromSSO } = await Promise.resolve().then(function () { return require('./index-5593566d.js'); });
     return fromSSO({
         profile,
         logger: options.logger,
@@ -171,7 +171,7 @@ const isWebIdentityProfile = (arg) => Boolean(arg) &&
     typeof arg.web_identity_token_file === "string" &&
     typeof arg.role_arn === "string" &&
     ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1;
-const resolveWebIdentityCredentials = async (profile, options) => Promise.resolve().then(function () { return require('./index-a4f2eaf6.js'); }).then(({ fromTokenFile }) => fromTokenFile({
+const resolveWebIdentityCredentials = async (profile, options) => Promise.resolve().then(function () { return require('./index-f5bb6142.js'); }).then(({ fromTokenFile }) => fromTokenFile({
     webIdentityTokenFile: profile.web_identity_token_file,
     roleArn: profile.role_arn,
     roleSessionName: profile.role_session_name,
@@ -219,4 +219,4 @@ const fromIni = (_init = {}) => async ({ callerClientConfig } = {}) => {
 };
 
 exports.fromIni = fromIni;
-//# sourceMappingURL=index-b25f489e.js.map
+//# sourceMappingURL=index-4d8bb9d8.js.map
