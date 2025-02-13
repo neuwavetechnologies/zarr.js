@@ -33,6 +33,8 @@ export class S3Store implements AsyncStore<ArrayBuffer, any> {
    */
   async getItem(key: string, opts?: { signal?: AbortSignal }): Promise<ArrayBuffer | any> {
     const objectKey = `${this.prefix}/${key}`;
+    
+    console.log("🚀 ~ S3Store ~ getItem ~ objectKey:", objectKey);
 
     if (objectKey.split("/").pop()!.charAt(0) == '.'){
       // .zarray, .zmetadata etc.

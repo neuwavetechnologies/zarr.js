@@ -1,5 +1,5 @@
 {
-  "name": "zarr",
+  "name": "neuwave_zarr",
   "version": "0.6.4",
   "description": "Javascript implementation of Zarr",
   "keywords": [
